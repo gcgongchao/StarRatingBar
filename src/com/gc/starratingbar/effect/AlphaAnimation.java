@@ -1,32 +1,24 @@
 package com.gc.starratingbar.effect;
 
-
-
-import com.gc.starratingbar.R;
-
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.Animator.AnimatorListener;
 import android.os.Handler;
-import android.os.Message;
 import android.view.View;
-/**
- * 
- * @author GeneralAndroid
- * @function  �ȷŴ�����С
- */
-public class ScaleAnimation {
-	
 
+import com.gc.starratingbar.R;
+
+public class AlphaAnimation {
 	public  static void startAnimation(final View object,int duration,final int index,final Handler mHandler,final int starNum)
 	{
 		AnimatorSet set = new AnimatorSet();
 		set.playTogether(
-				ObjectAnimator.ofFloat(object, "scaleX", 1, 2f),
-				ObjectAnimator.ofFloat(object, "scaleY", 1, 2f),
-				ObjectAnimator.ofFloat(object, "scaleX", 2f, 1f),
-				ObjectAnimator.ofFloat(object, "scaleY", 2f, 1f)
+				ObjectAnimator.ofFloat(object, "alpha", 0, 1f),
+				ObjectAnimator.ofFloat(object, "alpha", 1f, 0),
+				ObjectAnimator.ofFloat(object, "alpha", 0, 1f)
+//				ObjectAnimator.ofFloat(object, "scaleX", 2f, 1f),
+//				ObjectAnimator.ofFloat(object, "scaleY", 2f, 1f)
 
 		);
 		set.addListener(new AnimatorListener() {
