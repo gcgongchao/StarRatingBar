@@ -3,12 +3,34 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+   
     tools:context="com.gc.starratingbar.MainActivity"
-    tools:ignore="MergeRootFrame" >
-    <TextView 
-        android:layout_width="match_parent"
+    tools:ignore="MergeRootFrame" xmlns:app="http://schemas.android.com/apk/res/com.gc.starratingbar">
+    <com.gc.starratingbar.views.LStarRatingBar 
+        android:id="@+id/h_lstar_ratingbar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="hello world"
+        android:orientation="horizontal"
+         android:padding="30dp"
+        app:starUnselect="@drawable/no_star"
+        app:starSelected="@drawable/star_top"
+        android:layout_centerHorizontal="true"
+        app:starSelectedNum="3"
+        app:animationEffect="starScale"
+        
+        />
+    <com.gc.starratingbar.views.LStarRatingBar 
+        android:id="@+id/v_lstar_ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/h_lstar_ratingbar"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        app:starUnselect="@drawable/no_star"
+        app:starSelected="@drawable/star_top"
+        android:layout_centerHorizontal="true"
+         app:starSelectedNum="4"
+        app:animationEffect="starAlpha"
         />
 </RelativeLayout>
 

@@ -3,14 +3,16 @@
     <!-- LStarRatingBar的自定义属性 -->
      <declare-styleable name="LStarRatingBar">
          <!-- 定义枚举类型属性，该属性有两个值分别代表水平排列与垂直排列 -->
-        <attr name="orientation">
+       <!--  <attr name="orientation">
             <enum name="horizontal" value="0"/>
             <enum name="vertical" value="1"/>
-        </attr>
+        </attr> -->
         <!-- 定义枚举类型属性，该属性里面的值分别代表相应的动画效果 -->
         <attr name="animationEffect">
-            <enum name="starScale"	value="0"></enum>
-            <enum name="starTranslation" value="1"></enum>
+            <enum name="starDef" value="0"></enum>
+            <enum name="starScale"	value="1"></enum>
+            <enum name="starAlpha" value="2"></enum>
+            <enum name="starTranslation" value="3"></enum>
         </attr>
         <!-- 通过该属性设置未被选中的星星图片 -->
         <attr name="starUnselect" format="reference"/>

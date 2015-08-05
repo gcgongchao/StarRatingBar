@@ -6,8 +6,8 @@ import android.app.Activity;
 import android.os.Bundle;
 /**
  * 
- * @author Android½«¾ü
- *
+ * @author GeneralAndroid
+ * @time 2015/08/05
  */
 
 public class MainActivity extends Activity {

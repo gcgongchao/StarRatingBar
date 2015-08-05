@@ -2,46 +2,58 @@ package com.gc.starratingbar.views;
 
 import com.gc.starratingbar.R;
 import com.gc.starratingbar.constants.StarContants;
+import com.gc.starratingbar.effect.AlphaAnimation;
+import com.gc.starratingbar.effect.ScaleAnimation;
 
 import android.R.integer;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 /**
  * 
- * @author Android将军
- * @function 水平或垂直的自定义RatingBar,最大星星数为5
+ * @author GeneralAndroid
+ * @function The Custom RatingBar has a series of animations;
  * @time 2015/07/27
  */
 @SuppressLint({ "Recycle", "NewApi" }) 
 public class LStarRatingBar extends LinearLayout{
 
 	private Context mContext;
+
 	/**
-	 * 值为0时水平排列，值为1时垂直排列
-	 */
-	private int orientation;
-	/**
-	 * 根据值的不同应用不同的动画效果
+	 * 锟斤拷锟斤拷值锟侥诧拷同应锟矫诧拷同锟侥讹拷锟斤拷效锟斤拷
 	 */
 	private int animationEffect;
 	/**
-	 * 设置未选中的图片资源
+	 * 锟斤拷锟斤拷未选锟叫碉拷图片锟斤拷源
 	 */
 	private Drawable starUnselect;
 	/**
-	 * 设置选中的图片资源
+	 * 锟斤拷锟斤拷选锟叫碉拷图片锟斤拷源
 	 */
 	private Drawable starSelected;
 	/**
-	 * 设置选中的星星数量
+	 * 锟斤拷锟斤拷选锟叫碉拷锟斤拷锟斤拷锟斤拷锟斤拷
 	 */
 	private int starSelectedNum;
 	private ImageView mIvStarOne,mIvStarSecond,mIvStarThree,mIvStarFour,mIvStarFive;
+	private  Handler mHandler=new Handler()
+	{
+
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			startAnimation(msg.what);
+		}
+		
+	};
 	public LStarRatingBar(Context context) {
 		this(context, null);
 		
@@ -51,14 +63,14 @@ public class LStarRatingBar extends LinearLayout{
 		super(context, attrs);
 		this.mContext=context;
 		TypedArray mTypedArray=context.obtainStyledAttributes(attrs, R.styleable.LStarRatingBar);
-		//读取自定义属性的值
-		orientation=mTypedArray.getInt(R.styleable.LStarRatingBar_orientation, 0);
+		//锟斤拷取锟皆讹拷锟斤拷锟斤拷锟皆碉拷值
+//		orientation=mTypedArray.getInt(R.styleable.LStarRatingBar_orientation, 0);
 		animationEffect=mTypedArray.getInt(R.styleable.LStarRatingBar_animationEffect, 0);
 		starUnselect=mTypedArray.getDrawable(R.styleable.LStarRatingBar_starUnselect);
 		starSelected=mTypedArray.getDrawable(R.styleable.LStarRatingBar_starSelected);
 		starSelectedNum=mTypedArray.getInt(R.styleable.LStarRatingBar_starSelectedNum, 0);
 		initView();
-		startAnimation();
+		startAnimation(0);
 	}
 	private void  initView()
 	{
@@ -74,7 +86,8 @@ public class LStarRatingBar extends LinearLayout{
 		mIvStarFive=new ImageView(mContext);
 		mIvStarFive.setBackground(starUnselect);
 		LayoutParams mLayoutParams=new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		setOrientation(orientation);
+		mLayoutParams.setMargins(10, 10,10, 10);
+		
 		this.addView(mIvStarOne, mLayoutParams);
 		this.addView(mIvStarSecond, mLayoutParams);
 		this.addView(mIvStarThree, mLayoutParams);
@@ -82,14 +95,58 @@ public class LStarRatingBar extends LinearLayout{
 		this.addView(mIvStarFive, mLayoutParams);
 		
 	}
-	private void startAnimation()
+	private void startAnimation(int index)
 	{
 		switch (animationEffect) {
 		case StarContants.defEffect:
 			
 			break;
 		case StarContants.scaleEffect:
-			
+//			this.setPadding(20, 20, 20, );
+			switch (index) {
+			case 0:
+				ScaleAnimation.startAnimation(mIvStarOne, 360, 0,mHandler,starSelectedNum);
+				break;
+			case 1:
+				ScaleAnimation.startAnimation(mIvStarSecond, 360, 1,mHandler,starSelectedNum);
+				break;
+			case 2:
+				ScaleAnimation.startAnimation(mIvStarThree, 360, 2,mHandler,starSelectedNum);
+				break;
+			case 3:
+				ScaleAnimation.startAnimation(mIvStarFour, 360, 3,mHandler,starSelectedNum);
+				break;
+			case 4:
+				ScaleAnimation.startAnimation(mIvStarFive, 360, 4,mHandler,starSelectedNum);
+				break;
+				
+
+			default:
+				break;
+			}
+			break;
+		case StarContants.alphaEffect:
+			switch (index) {
+			case 0:
+				AlphaAnimation.startAnimation(mIvStarOne, 720, 0,mHandler,starSelectedNum);
+				break;
+			case 1:
+				AlphaAnimation.startAnimation(mIvStarSecond, 720, 1,mHandler,starSelectedNum);
+				break;
+			case 2:
+				AlphaAnimation.startAnimation(mIvStarThree, 720, 2,mHandler,starSelectedNum);
+				break;
+			case 3:
+				AlphaAnimation.startAnimation(mIvStarFour, 720, 3,mHandler,starSelectedNum);
+				break;
+			case 4:
+				AlphaAnimation.startAnimation(mIvStarFive, 720, 4,mHandler,starSelectedNum);
+				break;
+				
+
+			default:
+				break;
+			}
 			break;
 		default:
 			break;
