@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-         android:padding="30dp"
+         
         app:starUnselect="@drawable/no_star"
         app:starSelected="@drawable/star_top"
         android:layout_centerHorizontal="true"
@@ -25,12 +25,40 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/h_lstar_ratingbar"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+       
         app:starUnselect="@drawable/no_star"
         app:starSelected="@drawable/star_top"
         android:layout_centerHorizontal="true"
          app:starSelectedNum="4"
         app:animationEffect="starAlpha"
+        />
+     <com.gc.starratingbar.views.LStarRatingBar 
+        android:id="@+id/h_lstar_ratingbar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v_lstar_ratingbar"
+        android:orientation="horizontal"
+         
+        app:starUnselect="@drawable/no_star"
+        app:starSelected="@drawable/star_top"
+        android:layout_centerHorizontal="true"
+        app:starSelectedNum="3"
+        app:animationEffect="starTranslation"
+        
+        />
+      <com.gc.starratingbar.views.LStarRatingBar 
+        android:id="@+id/h_lstar_ratingbar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/h_lstar_ratingbar1"
+        android:orientation="horizontal"
+        
+        app:starUnselect="@drawable/no_star"
+        app:starSelected="@drawable/star_top"
+        android:layout_centerHorizontal="true"
+        app:starSelectedNum="5"
+        app:animationEffect="starTranslation"
+        
         />
 </RelativeLayout>
 

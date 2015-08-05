@@ -4,6 +4,7 @@ import com.gc.starratingbar.R;
 import com.gc.starratingbar.constants.StarContants;
 import com.gc.starratingbar.effect.AlphaAnimation;
 import com.gc.starratingbar.effect.ScaleAnimation;
+import com.gc.starratingbar.effect.TranslationAnimation;
 
 import android.R.integer;
 import android.annotation.SuppressLint;
@@ -87,6 +88,11 @@ public class LStarRatingBar extends LinearLayout{
 		mIvStarFive.setBackground(starUnselect);
 		LayoutParams mLayoutParams=new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		mLayoutParams.setMargins(10, 10,10, 10);
+		if(animationEffect==StarContants.scaleEffect)
+		{
+			mLayoutParams.bottomMargin=30;
+			mLayoutParams.topMargin=30;
+		}
 		
 		this.addView(mIvStarOne, mLayoutParams);
 		this.addView(mIvStarSecond, mLayoutParams);
@@ -103,6 +109,11 @@ public class LStarRatingBar extends LinearLayout{
 			break;
 		case StarContants.scaleEffect:
 //			this.setPadding(20, 20, 20, );
+//			LayoutParams mLayoutParams=(LayoutParams) this.getLayoutParams();
+//			mLayoutParams.bottomMargin=20;
+//			mLayoutParams.topMargin=20;
+//			setLayoutParams(mLayoutParams);
+			
 			switch (index) {
 			case 0:
 				ScaleAnimation.startAnimation(mIvStarOne, 360, 0,mHandler,starSelectedNum);
@@ -141,6 +152,29 @@ public class LStarRatingBar extends LinearLayout{
 				break;
 			case 4:
 				AlphaAnimation.startAnimation(mIvStarFive, 720, 4,mHandler,starSelectedNum);
+				break;
+				
+
+			default:
+				break;
+			}
+			break;
+		case StarContants.translationEffect:
+			switch (index) {
+			case 0:
+				TranslationAnimation.startAnimation(mIvStarOne, 720, 0,mHandler,starSelectedNum);
+				break;
+			case 1:
+				TranslationAnimation.startAnimation(mIvStarSecond, 720, 1,mHandler,starSelectedNum);
+				break;
+			case 2:
+				TranslationAnimation.startAnimation(mIvStarThree, 720, 2,mHandler,starSelectedNum);
+				break;
+			case 3:
+				TranslationAnimation.startAnimation(mIvStarFour, 720, 3,mHandler,starSelectedNum);
+				break;
+			case 4:
+				TranslationAnimation.startAnimation(mIvStarFive, 720, 4,mHandler,starSelectedNum);
 				break;
 				
 
